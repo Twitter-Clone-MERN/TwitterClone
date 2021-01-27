@@ -11,6 +11,9 @@ import Avatar from '../Avatar/Avatar'
 import ThemeButton from '../ThemeButton/ThemeButton'
 import { Media, Gif, Question, Emoji } from '../icons'
 
+import TextLimit from "react-text-limit-component"
+
+
 import './TweetEditor.css'
 
 function TweetEditor() {
@@ -93,6 +96,8 @@ function TweetEditor() {
                 {preview && (
                     <img style={{ width: "100%" }} src={preview} alt="preview" />
                 )}
+
+                {/* old Text */}
                 <TextareaAutosize
                     rows="59"
                     placeholder="What's happening?"
@@ -100,6 +105,12 @@ function TweetEditor() {
                     onChange={(e) => setTextTweet(e.target.value)}
                     value={textTweet}
                 />
+
+                {/* new Text Limiter */}
+                
+                {/* <TextLimit limit={28} rows={3} /> */}
+
+              
                 <div className="tweet-editor__body--secondary">
                     <div className="tweet-editor__body--icons">
 
@@ -126,6 +137,7 @@ function TweetEditor() {
                             {toggleEmoji && <Picker onSelect={addEmoji} style={{ position: 'absolute', top: '20px', left: '20px' }} />}
                         </div>
                     </div>
+                    
                     <ThemeButton primary onClick={handleSubmitPost}>Tweet</ThemeButton>
                 </div>
             </div>
